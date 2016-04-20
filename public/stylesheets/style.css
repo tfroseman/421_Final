@@ -10,4 +10,7 @@ a {
 #droptarget {
 
   margin: 60px;
+  border: solid;
+  border-width: 8px;
+
 }
