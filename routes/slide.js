@@ -7,9 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next){
-    res.render();
+    res.render('slide');
 });
 
-
+router.post('/new', function(req, res, next){
+    res.send('Post new slide here');
+});
 
 module.exports = router;
