@@ -10,4 +10,11 @@ a {
 #droptarget {
 
   margin: 60px;
+  border: solid;
+}
+#draggable {
+
+  margin: 30px;
+  border: solid;
+
 }
