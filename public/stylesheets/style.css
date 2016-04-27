@@ -1,20 +1,29 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #98bcca
+}
+
+h1 {
+    font-size: 72px;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
 
 #droptarget {
-
-  margin: 60px;
-  border: solid;
+    margin: 60px;
+    background-color: #f3f0f0;
+    border: solid;
 }
+
 #draggable {
+    margin: 45px;
+    border: solid;
 
-  margin: 30px;
-  border: solid;
+}
 
+.margin-offset-left{
+    margin-left:11.333333%;
 }

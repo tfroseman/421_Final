@@ -2,13 +2,26 @@ extends layout
 block content
     .container-fluid
         .row
-            .col-lg-3
-                button.btn.btn-primary New
-                button.btn.btn-danger Delete
-                button.btn.btn-primary Add Text
-                button.btn.btn-primary Add Image
+            .col-lg-12
+                h1.text-center PSS: Plus Sized Slides
+        .row
+            .col-lg-12
+                #droptarget(style='height: 40em;')
+        .row
+            .col-lg-12
+                #draggable
+        .row
+            .col-lg-2.margin-offset-left
+                button.btn.btn-primary.btn-lg(type="button") New
+            .col-lg-2
+                button.btn.btn-danger.btn-lg(type="button") Delete
+            .col-lg-2
+                button.btn.btn-primary.btn-lg(type="button") Add Text
+            .col-lg-2
+                button.btn.btn-primary.btn-lg(type="button") Add Bulleted Text
+            .col-lg-
+                button.btn.btn-primary.btn-lg(type="button") Save Slide
 
-            .col-lg-9
-                #droptarget(style='height: 35em;')
-                    #draggable
+
+
 
