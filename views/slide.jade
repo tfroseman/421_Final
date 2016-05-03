@@ -7,9 +7,10 @@ block content
         .row
             .col-lg-12
                 #droptarget(style="height: 40em;")
-                   each text in body.text
-                       span= text
-                   each image in body.image
+                    texts = slide_text
+                   each text in texts
+                       span #{text}
+                   each image in slide_image
                        .img-responsive
         .row
             .col-lg-12
