@@ -6,15 +6,8 @@ block content
                 h1.text-center PSS: Plus Sized Slides
         .row
             .col-lg-12
-                #droptarget(style="height: 40em;")
-                    texts = slide_text
-                   each text in texts
-                       span #{text}
-                   each image in slide_image
-                       .img-responsive
-        .row
-            .col-lg-12
-                #draggable.draggingelement
+                #droptarget(style=" height: 40em;")
+                    #draggable(style="height: 15em;").dragging_element
 
 
         .row

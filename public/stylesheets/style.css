@@ -20,7 +20,8 @@ a {
 
 #draggable {
     margin: 45px;
-    border: solid;
+    border: dashed
+;
 
 }
 

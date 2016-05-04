@@ -1,0 +1,1 @@
+$(function(){$("#draggable").click(function(){var t=$(document.createElement("input"));return t.attr("type","file"),t.trigger("click"),!1})}),interact("dragging_element").draggable({inertia:!1,restrict:{restriction:"parent",endOnly:!0,elementRect:{top:0,left:0,bottom:1,right:1}}});

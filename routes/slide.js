@@ -14,7 +14,7 @@ router.get('/:id', function(req, res, next) {
     };
 
     //Get the damn slide
-    db.serialize(function() {
+ /*   db.serialize(function() {
         db.get("SELECT * FROM slides WHERE ROWID =" + slide_body.id, function(err, row) {
             console.log(row);
             slide_body.title = row.title;
@@ -27,7 +27,7 @@ router.get('/:id', function(req, res, next) {
             console.log(row);
             slide_body.images.push(row);
         });
-    });
+    });*/
 
     res.render('slide', { slide_text : slide_body.texts, slide_image : slide_body.images });
 });
