@@ -2,13 +2,16 @@ doctype html
 html
     head
         title= title
+        script(src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous")
         link(rel='stylesheet', href='/stylesheets/style.css')
         link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        script(src='//cdn.jsdelivr.net/interact.js/1.2.6/interact.min.js')
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+
 
     body
         block content
+    script(src='/javascripts/click_events.js', type='javascript')
 
-    script(src='/javascripts/mixed.js', type='javascript')
-    script(src='/javascripts/interact.min.js', type='javascript')
-    script(src='/javascripts/bootstrap.min.js', type='javascript')
-    script(src='/javascripts/jquery.js', type='javascript')
+
+
