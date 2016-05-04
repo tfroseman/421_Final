@@ -1,5 +1,5 @@
 //Any element with the draggable class can be moved and is limited within its parent
-interact('draggable')
+interact('dragging_element')
     .draggable({
        inertia: false,
         restrict:{
