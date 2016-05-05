@@ -47,7 +47,7 @@ block content
 
         // this is used later in the resizing and gesture demos
         window.dragMoveListener = dragMoveListener;
-
+        var selected = null;
 
         $(document).on('click', '#add_text', function () {
             console.log("Adding Text");
@@ -60,6 +60,18 @@ block content
 
         $(document).on('mouseleave', 'p.dragging_element, ul.dragging_element', function () {
             $(this).css('border-style', 'none');
+        });
+
+        $(document).on('click', 'p.dragging_element, ul.dragging_element, img.dragging_element', function () {
+            selected = $(this);
+        });
+
+        $(document).on('click', '#delete', function () {
+            selected.remove();
+        });
+
+        $(document).on('click', '#new', function () {
+            $('#droptarget').children().remove();
         });
 
         $(document).on('click', '#add_bullet', function () {
@@ -162,6 +174,16 @@ block content
             }
         };
 
+        function convert_to_base64(blob_to_convert){
+            var reader = new window.FileReader();
+            reader.readAsDataURL(blob_to_convert);
+            reader.onloadend = function(){
+                base64data = reader.result;
+                console.log(base64data);
+            }
+        }
+
+
     .container-fluid
         .row
             .col-lg-12
@@ -181,15 +203,15 @@ block content
 
         .row
             .col-lg-2.margin-offset-left
-                #new.button.btn.btn-primary.btn-lg(type="button") New
+                #new.button.btn.btn-primary.btn-lg() New
             .col-lg-2
-                #delete.button.btn.btn-danger.btn-lg(type="button") Delete
+                #delete.button.btn.btn-danger.btn-lg() Delete
             .col-lg-2
                 .button.btn.btn-primary.btn-lg(data-toggle="modal", data-target="#add_text_modal") Add Text
             .col-lg-2
                 #add_b_text.button.btn.btn-primary.btn-lg(data-toggle="modal", data-target="#add_bullet_modal") Add Bulleted Text
             .col-lg-2
-                #save_slide.button.btn.btn-primary.btn-lg(type="button") Save Slide
+                #save_slide.button.btn.btn-primary.btn-lg() Save Slide
 
 
 
