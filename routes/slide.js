@@ -41,8 +41,9 @@ router.get('/new', function(req, res, next){
 router.post('/new', function(req, res, next){
 
     var new_id = 0;
-    //console.log(req.body.data.slide_body);
-    var slide = req.body.data.slide_body;
+    //console.log(req.body);
+    var slide = req.body.slide_body;
+    console.log(slide);
     db.run('INSERT INTO slides VALUES (?)', slide.title, function(err, something){
         new_id = this.lastID;
 

@@ -132,7 +132,8 @@ block content
             $.ajax({
                 type: "POST",
                 url: "/slide/new",
-                body: data
+                contentType: 'application/json',
+                data: JSON.stringify(data)
             });
         });
 
