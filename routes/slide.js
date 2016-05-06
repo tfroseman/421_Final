@@ -40,25 +40,28 @@ router.get('/new', function(req, res, next){
 //Store a new slide
 router.post('/new', function(req, res, next){
 
-    new_id = 0;
-    console.log(req.slide_body.title);
-    db.run('INSERT INTO slides VALUES (?)', req.slide_body.title, function(err, something){
-        console.log(err);
-        console.log(this);
+    var new_id = 0;
+    //console.log(req.body.data.slide_body);
+    var slide = req.body.data.slide_body;
+    db.run('INSERT INTO slides VALUES (?)', slide.title, function(err, something){
         new_id = this.lastID;
-        if(err != null){
-            for(var text in req.slide_body.texts) {
-                db.run('INSERT INTO text VALUES (?,?,?,?)', [new_id, text.text, text.x_pos, text.y_pos]);
-            }
-            for(var image in req.slide_body.images) {
-                db.run('INSERT INTO image VALUES (?,?,?,?)', [image.image, text.x_pos, text.y_pos, new_id]);
-            }
-        }else{
-            res.send('Database error');
-        }
-    });
 
-    res.send('Post new slide here');
+        console.log(slide.texts[0].text);
+
+        slide.texts.forEach(function(text){
+            db.run('INSERT INTO texts VALUES (?,?,?,?)', [new_id, text.text, text.x_pos, text.y_pos], function(err, something){console.log(err)});
+        });
+        slide.images.forEach(function(image){
+            db.run('INSERT INTO images VALUES (?,?,?,?)', [image.image, image.x_pos, image.y_pos, new_id],function(err, something){console.log(err)});
+        });
+
+        if(err != null){
+
+        }else if (err == null){
+            console.log(err);
+        }
+        res.send('Success');
+    });
 });
 
 //Update a slide

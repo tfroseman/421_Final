@@ -79,10 +79,10 @@ block content
             $('#droptarget').append('<ul class="dragging_element"><li>' + $('#bullet_input').val() + '</li></ul>');
         });
 
-
         $(document).on('click', '#save_slide', function () {
             var data = {
                 slide_body: {
+                    title: "Slide title",
                     texts: [],
                     bullets: [],
                     images: []
@@ -95,24 +95,44 @@ block content
                 y_pos: 0
             };
 
+            var image_object = {
+                image: null,
+                x_pos: 0,
+                y_pos: 0
+            };
+
             $.each($('p.dragging_element'), function (index, value) {
                 text_object.text = $(this).text();
                 text_object.x_pos = $(this).css('transform').split(/[()]/)[1].split(',')[4];
                 text_object.y_pos = $(this).css('transform').split(/[()]/)[1].split(',')[5];
-                data.texts.push(text_object);
+                data.slide_body.texts.push(text_object);
             });
 
             $.each($('ul.dragging_element'), function (index, value) {
                 text_object.text = $(this).text();
                 text_object.x_pos = $(this).css('transform').split(/[()]/)[1].split(',')[4];
                 text_object.y_pos = $(this).css('transform').split(/[()]/)[1].split(',')[5];
-                data.bullets.push(text_object);
+                data.slide_body.bullets.push(text_object);
             });
+
+            /*$.each($('img.dragging_element'), function(index, value){
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', $(this).attr('src'), true);
+                xhr.responseType = 'blob';
+                xhr.onload = function(e){
+                    if(this.status == 200){
+                        var img_blob = this.response;
+                        image_object.image = convert_to_base64(img_blob);
+                        image_object.x_pos = $(this).css('transform').split(/[()]/)[1].split(',')[4];
+                        image_object.y_pos = $(this).css('transform').split(/[()]/)[1].split(',')[5];
+                    }
+                }
+            });*/
 
             $.ajax({
                 type: "POST",
-                url: "/new",
-                data: data
+                url: "/slide/new",
+                body: data
             });
         });
 
@@ -175,12 +195,15 @@ block content
         };
 
         function convert_to_base64(blob_to_convert){
+            var base64 = null;
             var reader = new window.FileReader();
             reader.readAsDataURL(blob_to_convert);
             reader.onloadend = function(){
                 base64data = reader.result;
                 console.log(base64data);
+                base64 = base64data;
             }
+            return base64;
         }
 
 
@@ -212,6 +235,7 @@ block content
                 #add_b_text.button.btn.btn-primary.btn-lg(data-toggle="modal", data-target="#add_bullet_modal") Add Bulleted Text
             .col-lg-2
                 #save_slide.button.btn.btn-primary.btn-lg() Save Slide
+
 
 
 
